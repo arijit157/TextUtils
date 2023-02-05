@@ -3,8 +3,8 @@ import './App.css';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import Textarea from './components/Textarea';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import About from './components/About';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// import About from './components/About';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -44,16 +44,15 @@ function App() {
 
   return (
     <>
-      <Router>
+      {/* <Router> */}
         <Navbar logo="TextUtils" about="About Us" mode={mode} toggleMode={toggleDayDarkMode} switchTextColor={switchTextColor} switchText={switchText} />
         <Alert alert={alert} />
-        {/* <Router> */}
-        <Routes>
-          <Route exact path='/' element={<Textarea theme={mode} showAlert={showAlert} />} />
-          <Route exact path='/about' element={<About />} />
-        </Routes>
-        {/* </Router> */}
-      </Router>
+        <Textarea theme={mode} showAlert={showAlert} />
+        {/* <Routes> */}
+          {/* <Route exact path='/' element={<Textarea theme={mode} showAlert={showAlert} />} /> */}
+          {/* <Route exact path='/about' element={<About />} /> */}
+        {/* </Routes> */}
+      {/* </Router> */}
     </>
   );
 }
