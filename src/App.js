@@ -3,8 +3,8 @@ import './App.css';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import Textarea from './components/Textarea';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import About from './components/About';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import About from './components/About';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -23,14 +23,22 @@ function App() {
     }, 2000);
   }
 
+  // let removeBodyClasses=()=>{
+  //   document.body.classList.remove("bg-primary");
+  //   document.body.classList.remove("bg-success");
+  //   document.body.classList.remove("bg-warning");
+  //   document.body.classList.remove("bg-danger");
+  // }
+
   let toggleDayDarkMode = () => {
+    // removeBodyClasses();
+    // document.body.classList.add(`bg-${cls}`);
     if (mode === "dark") {
       setMode("light");
       setSwitchTextCOlor("dark");
       setSwitchText("dark");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode enabled!", "success");
-      document.title = "TextUtils | Light Mode";
     }
     else {
       setMode("dark");
@@ -38,21 +46,20 @@ function App() {
       setSwitchText("light");
       document.body.style.backgroundColor = "black";
       showAlert("Dark mode enabled!", "success");
-      document.title = "TextUtils | Dark Mode";
     }
   }
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar logo="TextUtils" about="About Us" mode={mode} toggleMode={toggleDayDarkMode} switchTextColor={switchTextColor} switchText={switchText} />
         <Alert alert={alert} />
-        <Textarea theme={mode} showAlert={showAlert} />
-        {/* <Routes> */}
-          {/* <Route exact path='/' element={<Textarea theme={mode} showAlert={showAlert} />} /> */}
-          {/* <Route exact path='/about' element={<About />} /> */}
-        {/* </Routes> */}
-      {/* </Router> */}
+        {/* <Textarea theme={mode} showAlert={showAlert} /> */}
+        <Routes>
+          <Route exact path='/' element={<Textarea theme={mode} showAlert={showAlert} />} />
+          <Route exact path='/about' element={<About />} />
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -108,7 +108,7 @@ export default function Textarea(props) {
                     <h2>Your text summary</h2>
                     <p>
                         {/* Words: {text.split(" ").length} & Characters: {text.length} */}
-                        Words: {text.split(" ")[0]==="" ? 0 : text.split(" ").length} & Characters: {text.length}
+                        Words: {text.split(" ").filter((el)=>{return el.length!==0}).length} & Characters: {text.length}
                     </p>
                 </div>
                 <div className="preview my-4">
